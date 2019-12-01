@@ -36,9 +36,7 @@ class TodoController {
   async store ({ request }) {
     const todoString = request.only(['content'])
 
-    const createdTodo = 
-      await TODO
-      .create(todoString)
+    const createdTodo = await TODO.create(todoString)
 
     return createdTodo
   }
@@ -67,13 +65,12 @@ class TodoController {
   async updateStatus ({ params }) {
     const todoId = params.id
 
-    const updatedTodo = 
-      await TODO
+    await TODO
       .query()
       .where('id', todoId)
       .update({ completed: true });
 
-    return updatedTodo;
+    return
   }
 
   /**
